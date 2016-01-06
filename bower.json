@@ -1,0 +1,29 @@
+{
+  "name": "react-tutorial",
+  "description": "Code from the React tutorial.",
+  "main": "server.js",
+  "authors": [
+    "mcalthrop"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "react",
+    "tutorial",
+    "comment",
+    "example"
+  ],
+  "homepage": "https://github.com/mcalthrop/react-tutorial",
+  "moduleType": [
+    "es6"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "lodash": "~3.10.1"
+  }
+}
