@@ -41,6 +41,9 @@ var CommentForm = React.createClass({
         author: '',
         text: ''
     },
+    propTypes: {
+        onCommentSubmit: React.PropTypes.func.isRequired
+    },
     getInitialState: function () {
         return _.clone(this.initialState);
     },
@@ -61,12 +64,6 @@ var CommentForm = React.createClass({
                 text: text
             });
             this.setState(this.getInitialState());
-        }
-    },
-    componentDidMount: function () {
-        // check if required properties have been set
-        if (!this.props.onCommentSubmit) {
-            throw new Error('onCommentSubmit property not set');
         }
     },
     render: function () {
