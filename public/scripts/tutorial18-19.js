@@ -1,4 +1,4 @@
-/* global $, _, React, ReactDOM */
+/* global $, _, React, ReactDOM, marked */
 
 var Comment = React.createClass({
     rawMarkup: function () {
@@ -56,8 +56,17 @@ var CommentForm = React.createClass({
         var text = this.state.text.trim();
 
         if (text || author) {
-            // TODO: send request to the server
+            this.props.onCommentSubmit({
+                author: author,
+                text: text
+            });
             this.setState(this.getInitialState());
+        }
+    },
+    componentDidMount: function () {
+        // check if required properties have been set
+        if (!this.props.onCommentSubmit) {
+            throw new Error('onCommentSubmit property not set');
         }
     },
     render: function () {
@@ -100,6 +109,9 @@ var CommentBox = React.createClass({
             }.bind(this)
         });
     },
+    handleCommentSubmit: function (comment) {
+        // TODO: submit to the server and refresh the list
+    },
     getInitialState: function () {
         return {
             data: []
@@ -114,7 +126,7 @@ var CommentBox = React.createClass({
             <div className="commentBox">
                 <h1>Comments</h1>
                 <CommentList data={this.state.data}/>
-                <CommentForm />
+                <CommentForm onCommentSubmit={this.handleCommentSubmit}/>
             </div>
         );
     }
